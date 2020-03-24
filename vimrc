@@ -46,6 +46,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'connorholyday/vim-snazzy'
+Plug 'Valloric/YouCompleteMe'
+Plug 'w0rp/ale'
 call plug#end()
 
 autocmd vimEnter * NERDTree
