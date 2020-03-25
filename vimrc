@@ -35,7 +35,6 @@ map sj :set splitbelow<CR>:split<CR>
 
 
 
-
 map s <nop>
 map S :w!<CR>
 map Q :q!<CR>
@@ -48,6 +47,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'connorholyday/vim-snazzy'
 Plug 'Valloric/YouCompleteMe'
 Plug 'w0rp/ale'
+Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
 autocmd vimEnter * NERDTree
