@@ -50,7 +50,7 @@ Plug 'w0rp/ale'
 Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
-autocmd vimEnter * NERDTree
+" autocmd vimEnter * NERDTree
 color snazzy
 let g:SnazzyTransparent=1
 
