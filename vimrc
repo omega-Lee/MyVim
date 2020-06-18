@@ -2,6 +2,9 @@
 set nu
 set number
 
+"显示光标所在的当前行的行号，其他行都为相对于该行的相对行号。
+set relativenumber
+
 "去掉提示音
 set vb
 set noeb
