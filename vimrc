@@ -57,7 +57,7 @@ set ruler
 filetype plugin indent on
 
 "在vim下分屏
-map sl :set splitright<C>:vsplit<CR>
+map sl :set splitright<CR>:vsplit<CR>
 map sh :set nosplitright<CR>:vsplit<CR>
 map sk :set nosplitbelow<CR>:split<CR>
 map sj :set splitbelow<CR>:split<CR>
@@ -67,8 +67,8 @@ map s <nop>
 map S :w!<CR>
 map Q :q!<CR>
 
-" 映射插入模式下的 Alt为 ESC 键
-inoremap <Alt>  <esc>
+" 映射插入模式下的 jj 为 ESC 键
+imap jj <ESC>
 "----------键位配置内容结束----------
 
 " ----------Plug插件管理开始----------
@@ -84,6 +84,5 @@ call plug#end()
 autocmd vimEnter * NERDTree
 color snazzy
 let g:SnazzyTransparent=1
-" ----------Plug插件管理结束----------
-
+" ----------Plug插件管理结束-------
 
