@@ -43,7 +43,7 @@ map S :w!<CR>
 map Q :q!<CR>
 
 " 映射插入模式下的 大写键为 ESC 键，按ctrl+u，将你刚刚输入的那个单词变成大写。
-inoremap ui <esc>
+inoremap UI <esc>
 
 " 插件管理
 call plug#begin('~/.vim/plugged')
