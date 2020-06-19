@@ -59,7 +59,7 @@ filetype plugin indent on
 "在vim下分屏
 map sl :set splitright<C>:vsplit<CR>
 map sh :set nosplitright<CR>:vsplit<CR>
-map sk :set noplitbelow<CR>:split<CR>
+map sk :set nosplitbelow<CR>:split<CR>
 map sj :set splitbelow<CR>:split<CR>
 
 "取消s键 S:保存 Q:退出
