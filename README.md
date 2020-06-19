@@ -8,9 +8,9 @@
 
 
 # 特殊键位说明
-> *W:强制保存*   
-> *Q:强制退出*   
-> *ALt:ESC*   
+> ***W:强制保存***     
+> ***Q:强制退出***     
+> ***ALt:ESC***   
 
 # 使用vim-plug管理插件
 >使用介绍参考： ***https://github.com/junegunn/vim-plug***
