@@ -67,6 +67,12 @@ map s <nop>
 map S :w!<CR>
 map Q :q!<CR>
 
+"leader:<space>
+let mapleader="<Space>"
+map <leader>s:w!<CR>
+map <leader>q:q!<CR>
+map <leader>sq:wq!<CR>
+
 " 映射插入模式下的 jj 为 ESC 键
 imap jj <ESC>
 "----------键位配置内容结束----------
