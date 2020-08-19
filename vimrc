@@ -68,7 +68,7 @@ map S :w!<CR>
 map Q :q!<CR>
 
 "leader:<space>
-let mapleader="<Space>"
+let mapleader = "\<space>"
 map <leader>s:w!<CR>
 map <leader>q:q!<CR>
 map <leader>sq:wq!<CR>
