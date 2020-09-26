@@ -20,6 +20,18 @@
 "v前缀：    在可视模式下生效
 "i前缀：    在插入模式下生效
 "c前缀：    在EX命令模式下生效
+
+"		(nothing) In a function: local to a function; otherwise: global 
+
+"buffer-variable    b:     Local to the current buffer.                          
+"window-variable    w:     Local to the current window.                          
+"tabpage-variable   t:     Local to the current tab page.                        
+"lobal-variable    	g:     Global.                                               
+"local-variable     l:     Local to a function.                                  
+"script-variable    s:     Local to a :source'ed Vim script.                     
+"function-argument  a:     Function argument (only inside a function).           
+"vim-variable       v:     Global, predefined by Vim.
+
 "----------Notes End----------
 
 "----------键位配置内容开始----------
@@ -81,7 +93,7 @@ inoremap jk <ESC>
 
 "----------键位配置内容结束----------
 
-" ----------Plug插件管理开始----------
+"----------Plug插件管理开始----------
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
@@ -90,15 +102,18 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'w0rp/ale'
 Plug 'jiangmiao/auto-pairs'
 call plug#end()
+"----------Plug插件管理结束-------
 
-autocmd vimEnter * NERDTree
+"snazzy setting began
 color snazzy
 let g:SnazzyTransparent=1
-" ----------Plug插件管理结束-------
+"snazzy setting end
 
-"nerdtree setting begin
-
-" 显示行号
+"nerdtree setting began
+"显示行号
 let NERDTreeShowLineNumbers=1
-
+"auto running nerdtree
+autocmd vimEnter * NERDTree
+"use double leader key to open or close nerdtree 
+map <leader><leader> :NERDTreeToggle<CR>
 "nerdtree setting end
