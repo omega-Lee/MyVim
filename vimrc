@@ -35,6 +35,13 @@
 "----------Notes End----------
 
 "----------键位配置内容开始----------
+"enable folding
+set foldmethod=indent
+"折叠等级
+set foldlevel=99
+
+"enable folding with the spacbar
+nnoremap fo za
 "显示行号
 set nu
 set number
@@ -117,3 +124,32 @@ autocmd vimEnter * NERDTree
 "use double leader key to open or close nerdtree 
 map <leader><leader> :NERDTreeToggle<CR>
 "nerdtree setting end
+
+"f5 自动执行代码
+map <F5> :call CompileRunGcc()<CR>
+func! CompileRunGcc()
+        exec "w"
+        if &filetype == 'c'
+                exec "!g++ % -o %<"
+                exec "!time ./%<"
+        elseif &filetype == 'cpp'
+                exec "!g++ % -o %<"
+                exec "!time ./%<"
+        elseif &filetype == 'java'
+                exec "!javac %"
+                exec "!time java %<"
+        elseif &filetype == 'sh'
+                :!time bash %
+        elseif &filetype == 'python'
+                exec "!clear"
+                exec "!time python3 %"
+        elseif &filetype == 'html'
+                exec "!firefox % &"
+        elseif &filetype == 'go'
+                " exec "!go build %<"
+                exec "!time go run %"
+        elseif &filetype == 'mkd'
+                exec "!~/.vim/markdown.pl % > %.html &"
+                exec "!firefox %.html &"
+        endif
+endfunc
