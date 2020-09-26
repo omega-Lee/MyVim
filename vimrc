@@ -68,13 +68,17 @@ map S :w!<CR>
 map Q :q!<CR>
 
 "leader:<space>
-let mapleader = "\<space>"
-map <leader>s:w!<CR>
-map <leader>q:q!<CR>
-map <leader>sq:wq!<CR>
+nnoremap <SPACE> <Nop>
+
+let mapleader="\<SPACE>"
+
+map <leader>s :w!<CR>
+map <leader>q :q!<CR>
+map <leader>sq :wq!<CR>
 
 " 映射插入模式下的 jj 为 ESC 键
-imap jj <ESC>
+inoremap jk <ESC>
+
 "----------键位配置内容结束----------
 
 " ----------Plug插件管理开始----------
@@ -92,3 +96,9 @@ color snazzy
 let g:SnazzyTransparent=1
 " ----------Plug插件管理结束-------
 
+"nerdtree setting begin
+
+" 显示行号
+let NERDTreeShowLineNumbers=1
+
+"nerdtree setting end
