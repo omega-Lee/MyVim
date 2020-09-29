@@ -86,6 +86,9 @@ map s <nop>
 map S :w!<CR>
 map Q :q!<CR>
 
+"在vim里面打开终端
+map tm :term<CR>
+
 "leader:<space>
 nnoremap <SPACE> <Nop>
 
