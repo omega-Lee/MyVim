@@ -81,6 +81,7 @@ map sh :set nosplitright<CR>:vsplit<CR>
 map sk :set nosplitbelow<CR>:split<CR>
 map sj :set splitbelow<CR>:split<CR>
 
+map <C-z> <nop>
 "取消s键 S:保存 Q:退出
 map s <nop>
 map S :w!<CR>
@@ -156,3 +157,6 @@ func! CompileRunGcc()
                 exec "!firefox %.html &"
         endif
 endfunc
+set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+set termencoding=utf-8
+set encoding=utf-8
