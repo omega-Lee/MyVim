@@ -75,6 +75,9 @@ set ruler
 
 filetype plugin indent on
 
+set listchars+=tab:>-
+set list
+set nolist
 "在vim下分屏
 map sl :set splitright<CR>:vsplit<CR>
 map sh :set nosplitright<CR>:vsplit<CR>
@@ -112,9 +115,24 @@ Plug 'connorholyday/vim-snazzy'
 Plug 'Valloric/YouCompleteMe'
 Plug 'w0rp/ale'
 Plug 'jiangmiao/auto-pairs'
+Plug 'Yggdroot/indentLine'
 call plug#end()
 "----------Plug插件管理结束-------
 
+
+"let b:AutoPairs = g:AutoParis
+
+"let b:AutoPairs = g:AutoParis
+"let b:AutoPairs = g:AutoParis
+"let b:AutoPairs = g:AutoParis
+
+"let b:AutoPairs = g:AutoParis
+"auto-pairs begin"
+let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"'}
+let g:AutoPairsShortcutToggle = '<M-p>'
+
+"auto-pairl utoPairsShortcutToggle = '<M-p>s end"utoPairs['<']='>'
+"let b:AutoPairs = g:AutoParis
 "snazzy setting began
 color snazzy
 let g:SnazzyTransparent=1
