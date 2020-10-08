@@ -116,23 +116,18 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'w0rp/ale'
 Plug 'jiangmiao/auto-pairs'
 Plug 'Yggdroot/indentLine'
+Plug 'vim-scripts/luainspect.vim'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-lua-ftplugin'
 call plug#end()
 "----------Plug插件管理结束-------
 
+"auto-pairs begin
+let g:AutoPairs ={'(':')', '[':']', '{':'}',"'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''"} 
+let g:AutoPairsShortcutToggle = '<leader>p'
+"auto-pairs end
 
-"let b:AutoPairs = g:AutoParis
 
-"let b:AutoPairs = g:AutoParis
-"let b:AutoPairs = g:AutoParis
-"let b:AutoPairs = g:AutoParis
-
-"let b:AutoPairs = g:AutoParis
-"auto-pairs begin"
-let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"'}
-let g:AutoPairsShortcutToggle = '<M-p>'
-
-"auto-pairl utoPairsShortcutToggle = '<M-p>s end"utoPairs['<']='>'
-"let b:AutoPairs = g:AutoParis
 "snazzy setting began
 color snazzy
 let g:SnazzyTransparent=1
@@ -149,10 +144,11 @@ map <leader><leader> :NERDTreeToggle<CR>
 
 "f5 自动执行代码
 map <F5> :call CompileRunGcc()<CR>
+
 func! CompileRunGcc()
         exec "w"
         if &filetype == 'c'
-                exec "!g++ % -o %<"
+                exec "!gcc % -o %<"
                 exec "!time ./%<"
         elseif &filetype == 'cpp'
                 exec "!g++ % -o %<"
@@ -173,8 +169,13 @@ func! CompileRunGcc()
         elseif &filetype == 'mkd'
                 exec "!~/.vim/markdown.pl % > %.html &"
                 exec "!firefox %.html &"
+		elseif &filetype == 'lua'
+                exec "!lua %"
         endif
 endfunc
+"f5 自动执行代码
+
+map <F5> :call CompileRunGcc()<CR>
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8
 set encoding=utf-8
