@@ -93,6 +93,9 @@ map Q :q!<CR>
 "在vim里面打开终端
 map tm :term<CR>
 
+"在vim里面打开lazygit
+map lg :tabe<cr>:-tabmove<cr>:term lazygit<cr>
+
 "leader:<space>
 nnoremap <SPACE> <Nop>
 
