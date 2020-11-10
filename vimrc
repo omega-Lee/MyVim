@@ -108,6 +108,7 @@ map <leader>sq :wq!<CR>
 " 映射插入模式下的 jj 为 ESC 键
 inoremap jk <ESC>
 
+
 "----------键位配置内容结束----------
 
 "----------Plug插件管理开始----------
@@ -125,6 +126,16 @@ Plug 'gcmt/wildfire.vim'
 Plug 'tpope/vim-surround'
 call plug#end()
 "----------Plug插件管理结束-------
+
+"wildfiel setting begin
+"leader+fs:快速选择
+nmap <leader>fs <Plug>(wildfire-quick-select)
+"map <leader>ss <Plug>(wildfire-fule)
+"vmap <leader>f<Plug>(wildfire-water)
+let g:wildfie_objects = ["i'", 'i"', "i)", "i]", "i}", "ip", "it","i<"]
+"测试部分(AAAAA)
+"wildfiel setting end 
+
 
 "auto-pairs begin
 let g:AutoPairs ={'(':')', '[':']', '{':'}',"'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''"} 
