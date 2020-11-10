@@ -121,7 +121,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'Yggdroot/indentLine'
 Plug 'vim-scripts/luainspect.vim'
 Plug 'xolox/vim-misc'
-Plug 'xolox/vim-lua-ftplugin'
+Plug 'gcmt/wildfire.vim'
+Plug 'tpope/vim-surround'
 call plug#end()
 "----------Plug插件管理结束-------
 
