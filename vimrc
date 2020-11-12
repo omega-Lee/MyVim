@@ -124,6 +124,7 @@ Plug 'vim-scripts/luainspect.vim'
 Plug 'xolox/vim-misc'
 Plug 'gcmt/wildfire.vim'
 Plug 'tpope/vim-surround'
+Plug 'mg979/vim-visual-multi'
 call plug#end()
 "----------Plug插件管理结束-------
 
@@ -132,8 +133,12 @@ call plug#end()
 nmap <leader>fs <Plug>(wildfire-quick-select)
 "map <leader>ss <Plug>(wildfire-fule)
 "vmap <leader>f<Plug>(wildfire-water)
-let g:wildfie_objects = ["i'", 'i"', "i)", "i]", "i}", "ip", "it","i<"]
-"测试部分(AAAAA)
+let g:wildfie_objects = ["i'", 'i"', "i)", "i]", "i}", "ip", "it","i<","i/*"]
+"测试部分( *AAAAAtest code* )
+"测试部分( *AAAAAtest code* )
+"测试部分( *AAAAAtest code* )
+"测试部分( *AAAAAtest code* )
+"测试部分( *AAAAA* )
 "wildfiel setting end 
 
 
