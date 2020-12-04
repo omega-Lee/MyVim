@@ -125,6 +125,8 @@ Plug 'xolox/vim-misc'
 Plug 'gcmt/wildfire.vim'
 Plug 'tpope/vim-surround'
 Plug 'mg979/vim-visual-multi'
+Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'suan/vim-instant-markdown'
 call plug#end()
 "----------Plug插件管理结束-------
 
