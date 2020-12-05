@@ -35,6 +35,15 @@
 "----------Notes End----------
 
 "----------键位配置内容开始----------
+"渐进式搜索
+set incsearch
+"高亮
+"set hlsearch
+" 开启大小写不敏感（默认值）
+set ignorecase
+" 开启智能推测
+set smartcase
+
 "enable folding
 set foldmethod=indent
 "折叠等级
@@ -95,7 +104,7 @@ map tm :term<CR>
 
 "在vim里面打开lazygit
 map lg :tabe<cr>:-tabmove<cr>:term lazygit<cr>
-
+map <C-f> :/
 "leader:<space>
 nnoremap <SPACE> <Nop>
 
@@ -127,6 +136,9 @@ Plug 'tpope/vim-surround'
 Plug 'mg979/vim-visual-multi'
 Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'suan/vim-instant-markdown'
+"Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 "----------Plug插件管理结束-------
 
