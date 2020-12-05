@@ -3,11 +3,10 @@
 # 项目自带plug-vim  
 # 使用方法：
 ## clone下我的项目，把vimrc移动到~/下，修改vimrc为.vimrc 
-> ***sudo git clone https://github.com/omega-Lee/MyVim***  
-> ***sudo cp vimrc ~/***  
-> ***sudo mv vimrc .vimrc***     
-把autoload文件移到.vim/下:
-cp -r autoload/ ../
+> ***sudo git clone https://github.com/omega-Lee/vim-config***  
+> ***ln -s -f ~/vim-config/vimrc ~/.vim/vimrc***     
+把autoload文件移到.vim/下:  
+> ***cp -r ~/vim-config/autoload/ ~/.vim/***     
 
 # 特殊键位说明
 > ***space s:强制保存***     
