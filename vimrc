@@ -122,10 +122,22 @@ inoremap jk <ESC>
 
 "----------Plug插件管理开始----------
 call plug#begin('~/.vim/plugged')
+"theme
+Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+Plug 'hzchirs/vim-material'
+Plug 'jacoborus/tender.vim'
+Plug 'connorholyday/vim-snazzy'
+Plug 'dunstontc/vim-vscode-theme'
+Plug 'blueshirts/darcula'
+Plug 'dracula/vim'
+Plug 'junegunn/seoul256.vim'
+Plug 'karoliskoncevicius/sacredforest-vim'
+Plug 'arcticicestudio/nord-vim'
+Plug 'rakr/vim-one'
+Plug 'hzchirs/vim-material'
+"theme
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
-Plug 'connorholyday/vim-snazzy'
-Plug 'Valloric/YouCompleteMe'
 Plug 'w0rp/ale'
 Plug 'jiangmiao/auto-pairs'
 Plug 'Yggdroot/indentLine'
@@ -136,11 +148,62 @@ Plug 'tpope/vim-surround'
 Plug 'mg979/vim-visual-multi'
 Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'suan/vim-instant-markdown'
-"Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 call plug#end()
 "----------Plug插件管理结束-------
+
+"Theme setting 
+syntax enable
+
+"-material
+"colorscheme material
+"
+"if (has('nvim'))
+"  let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
+"endif
+"
+"if (has('termguicolors'))
+"  set termguicolors
+"endif
+"-material
+
+"colorscheme one
+
+"colorscheme nord
+
+"-vim-material
+"set background=dark
+"
+"let g:material_style='palenight'
+"set background=dark
+"
+"let g:material_style='oceanic'
+"set background=dark
+"
+"colorscheme vim-material
+"let g:airline_theme='material'
+"-vim-material
+
+"colorscheme one
+"set background=dark 
+
+"colorscheme sacredforest
+"set termguicolors
+
+"color seoul256
+"set background=dark
+
+if (has("termguicolors"))
+ set termguicolors
+endif
+colorscheme tender
+
+"color snazzy
+"let g:SnazzyTransparent=1
+"colorscheme snazzy
+"Theme setting 
+
 
 "wildfiel setting begin
 "leader+fs:快速选择
@@ -148,24 +211,12 @@ nmap <leader>fs <Plug>(wildfire-quick-select)
 "map <leader>ss <Plug>(wildfire-fule)
 "vmap <leader>f<Plug>(wildfire-water)
 let g:wildfie_objects = ["i'", 'i"', "i)", "i]", "i}", "ip", "it","i<","i/*"]
-"测试部分( *AAAAAtest code* )
-"测试部分( *AAAAAtest code* )
-"测试部分( *AAAAAtest code* )
-"测试部分( *AAAAAtest code* )
-"测试部分( *AAAAA* )
 "wildfiel setting end 
-
-
 "auto-pairs begin
 let g:AutoPairs ={'(':')', '[':']', '{':'}',"'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''"} 
 let g:AutoPairsShortcutToggle = '<leader>p'
 "auto-pairs end
 
-
-"snazzy setting began
-color snazzy
-let g:SnazzyTransparent=1
-"snazzy setting end
 
 "nerdtree setting began
 "显示行号
@@ -213,3 +264,4 @@ map <F5> :call CompileRunGcc()<CR>
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8
 set encoding=utf-8
+
