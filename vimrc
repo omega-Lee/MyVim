@@ -157,18 +157,40 @@ call plug#end()
 syntax enable
 
 "-material
-"colorscheme material
-"
-"if (has('nvim'))
-"  let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
-"endif
-"
-"if (has('termguicolors'))
-"  set termguicolors
-"endif
+if (has('nvim'))
+  let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
+endif
+
+if (has('termguicolors'))
+  set termguicolors
+endif
+"let g:material_theme_style = 'default'
+"let g:material_theme_style = 'darker-community'
+"let g:material_theme_style = 'palenight'
+"let g:material_theme_style = 'ocean'
+let g:material_theme_style = 'darker'
+"let g:material_theme_style = 'palenight-community'
+"let g:material_theme_style = 'ocean-community'
+
+let g:material_terminal_italics = 1
+
+colorscheme material
 "-material
 
+"-one
+"if (empty($TMUX))
+"	if (has("nvim"))
+"  		let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+"	endif
+"  
+"	if (has("termguicolors"))
+"    	set termguicolors
+"	endif
+"endif
+"
+"set background=dark 
 "colorscheme one
+"-one
 
 "colorscheme nord
 
@@ -182,11 +204,7 @@ syntax enable
 "set background=dark
 "
 "colorscheme vim-material
-"let g:airline_theme='material'
 "-vim-material
-
-"colorscheme one
-"set background=dark 
 
 "colorscheme sacredforest
 "set termguicolors
@@ -194,14 +212,20 @@ syntax enable
 "color seoul256
 "set background=dark
 
-if (has("termguicolors"))
- set termguicolors
-endif
-colorscheme tender
+"if (has("termguicolors"))
+" set termguicolors
+"endif
+"colorscheme tender
 
 "color snazzy
 "let g:SnazzyTransparent=1
 "colorscheme snazzy
+
+"-airline_theme set 
+let g:airline_theme='one'
+"let g:airline_theme='material'
+"-airline_theme set 
+
 "Theme setting 
 
 
