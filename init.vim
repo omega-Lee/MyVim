@@ -118,7 +118,7 @@ map <leader>sq :wq!<CR>
 inoremap jk <ESC>
 
 map <leader>is :PlugInstall<CR>
-
+map svim :source init.vim<CR>
 "----------键位配置内容结束----------
 
 "----------Plug插件管理开始----------
@@ -153,9 +153,13 @@ Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'suan/vim-instant-markdown'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+"Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 call plug#end()
 "----------Plug插件管理结束-------
+let g:AutoPairsFlyMode = 1
+let g:AutoPairsShortcutBackInsert = '<M-b>'
 
+let g:rainbow_active = 1 " 彩虹括号, 0代表关闭
 "Theme setting 
 syntax enable
 
