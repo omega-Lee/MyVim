@@ -1,0 +1,36 @@
+"----------Notes: 特殊键位和map类型----------
+"<k0>-<k9>       小键盘数字0到9
+"<S-x>           大写S配合x，意味着shift+x组合键
+"<C-x>           大写C配合x，意味着ctrl+x组合键
+"<A-x>           大写A配合x，意味着alt+x组合键
+"<ESC>           ESC键
+"<BS>            backspace退格键
+"<CR>            ENTER回车键
+"<Space>         空格键
+"<Shift>         shift键
+"<Ctrl>          ctrl键
+"<Alt>           alt键
+"<F1>-<F12>      F1到F12功能键
+"<S-...> Shift＋键 *shift* *<S-* 
+"<C-...> Control＋键 *control* *ctrl* *<C-* 
+"<M-...> Alt＋键 或 meta＋键 *meta* *alt* *<M-* 
+"<A-...> 同 <m-...> *<A-* 
+"nore前缀： 非递归
+"n前缀：    在普通模式下生效
+"v前缀：    在可视模式下生效
+"i前缀：    在插入模式下生效
+"c前缀：    在EX命令模式下生效
+
+"		(nothing) In a function: local to a function; otherwise: global 
+
+"buffer-variable    b:     Local to the current buffer.                          
+"window-variable    w:     Local to the current window.                          
+"tabpage-variable   t:     Local to the current tab page.                        
+"lobal-variable    	g:     Global.                                               
+"local-variable     l:     Local to a function.                                  
+"script-variable    s:     Local to a :source'ed Vim script.                     
+"function-argument  a:     Function argument (only inside a function).           
+"vim-variable       v:     Global, predefined by Vim.
+
+"----------Notes End----------
+
