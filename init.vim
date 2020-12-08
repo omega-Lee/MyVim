@@ -1,44 +1,10 @@
-"----------Notes: 特殊键位和map类型----------
-"<k0>-<k9>       小键盘数字0到9
-"<S-x>           大写S配合x，意味着shift+x组合键
-"<C-x>           大写C配合x，意味着ctrl+x组合键
-"<A-x>           大写A配合x，意味着alt+x组合键
-"<ESC>           ESC键
-"<BS>            backspace退格键
-"<CR>            ENTER回车键
-"<Space>         空格键
-"<Shift>         shift键
-"<Ctrl>          ctrl键
-"<Alt>           alt键
-"<F1>-<F12>      F1到F12功能键
-"<S-...> Shift＋键 *shift* *<S-* 
-"<C-...> Control＋键 *control* *ctrl* *<C-* 
-"<M-...> Alt＋键 或 meta＋键 *meta* *alt* *<M-* 
-"<A-...> 同 <m-...> *<A-* 
-"nore前缀： 非递归
-"n前缀：    在普通模式下生效
-"v前缀：    在可视模式下生效
-"i前缀：    在插入模式下生效
-"c前缀：    在EX命令模式下生效
-
-"		(nothing) In a function: local to a function; otherwise: global 
-
-"buffer-variable    b:     Local to the current buffer.                          
-"window-variable    w:     Local to the current window.                          
-"tabpage-variable   t:     Local to the current tab page.                        
-"lobal-variable    	g:     Global.                                               
-"local-variable     l:     Local to a function.                                  
-"script-variable    s:     Local to a :source'ed Vim script.                     
-"function-argument  a:     Function argument (only inside a function).           
-"vim-variable       v:     Global, predefined by Vim.
-
-"----------Notes End----------
-
 "----------键位配置内容开始----------
 "渐进式搜索
 set incsearch
 "高亮
 "set hlsearch
+"关闭高亮
+map nl :set nohlsearch<CR>
 " 开启大小写不敏感（默认值）
 set ignorecase
 " 开启智能推测
@@ -117,8 +83,10 @@ map <leader>sq :wq!<CR>
 " 映射插入模式下的 jj 为 ESC 键
 inoremap jk <ESC>
 
-map <leader>is :PlugInstall<CR>
-map svim :source init.vim<CR>
+map PI :PlugInstall<CR>
+map <c-5>:source init.vim<CR>
+map CI 	:CocInstall 
+map tt	:CocCommand explorer<CR>
 "----------键位配置内容结束----------
 
 "----------Plug插件管理开始----------
@@ -138,8 +106,10 @@ Plug 'rakr/vim-one'
 Plug 'hzchirs/vim-material'
 Plug 'mbbill/undotree'
 "theme
-
-Plug 'scrooloose/nerdtree'
+Plug 'preservim/nerdtree' |
+            \ Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'w0rp/ale'
 Plug 'jiangmiao/auto-pairs'
@@ -153,9 +123,95 @@ Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'suan/vim-instant-markdown'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+if has('nvim')
+  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/defx.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 "Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 call plug#end()
+
 "----------Plug插件管理结束-------
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+                \ 'Modified'  :'✹',
+                \ 'Staged'    :'✚',
+                \ 'Untracked' :'✭',
+                \ 'Renamed'   :'➜',
+                \ 'Unmerged'  :'═',
+                \ 'Deleted'   :'✖',
+                \ 'Dirty'     :'✗',
+                \ 'Ignored'   :'☒',
+                \ 'Clean'     :'✔︎',
+                \ 'Unknown'   :'?',
+                \ }
+"coc config 
+let g:coc_global_extensions = [
+	\ 'coc-actions',
+	\ 'coc-diagnostic',
+	\ 'coc-explorer',
+	\ 'coc-gitignore',
+	\ 'coc-json',
+	\ 'coc-lists',
+	\ 'coc-prettier',
+	\ 'coc-python',
+	\ 'coc-snippets',
+	\ 'coc-sourcekit',
+	\ 'coc-syntax',
+	\ 'coc-tasks',
+	\ 'coc-todolist',
+	\ 'coc-tslint-plugin',
+	\ 'coc-tsserver',
+	\ 'coc-vimlsp']
+
+set updatetime=100
+
+if has("patch-8.1.1564")
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+
+set shortmess+=c
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-space> coc#refresh()
+endif
+
+nmap <silent> <c--> <Plug>(coc-diagnostic-prev)
+nmap <silent> <c-+> <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+"coc config
+
 let g:AutoPairsFlyMode = 1
 let g:AutoPairsShortcutBackInsert = '<M-b>'
 
@@ -264,7 +320,7 @@ map <leader>ud :UndotreeToggle<CR>
 
 "f5 自动执行代码
 map <F5> :call CompileRunGcc()<CR>
-
+map CI :CocInstall
 func! CompileRunGcc()
         exec "w"
         if &filetype == 'c'
