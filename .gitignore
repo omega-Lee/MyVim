@@ -1,5 +1,2 @@
-./vim-scripts/common.vim
-./vim-scripts/functions.vim
-./vim-scripts/keymap.vim
-./vim-scripts/theme.vim
+./vim-scripts/
 ./test.vimrc
