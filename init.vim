@@ -1,3 +1,9 @@
+"vim script test
+
+
+"vim script test
+
+
 "----------键位配置内容开始----------
 "渐进式搜索
 set incsearch
@@ -53,6 +59,7 @@ filetype plugin indent on
 set listchars+=tab:>-
 set list
 set nolist
+
 "在vim下分屏
 map sl :set splitright<CR>:vsplit<CR>
 map sh :set nosplitright<CR>:vsplit<CR>
@@ -71,7 +78,7 @@ map tm :term<CR>
 "在vim里面打开lazygit
 map lg :tabe<cr>:-tabmove<cr>:term lazygit<cr>
 map <C-f> :/
-"leader:<space>
+
 nnoremap <SPACE> <Nop>
 
 let mapleader="\<SPACE>"
@@ -91,7 +98,8 @@ map tt	:CocCommand explorer<CR>
 
 "----------Plug插件管理开始----------
 call plug#begin('~/.vim/plugged')
-"theme
+
+"Theme
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'hzchirs/vim-material'
 Plug 'jacoborus/tender.vim'
@@ -105,9 +113,12 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'rakr/vim-one'
 Plug 'hzchirs/vim-material'
 Plug 'mbbill/undotree'
-"theme
-Plug 'preservim/nerdtree' |
-            \ Plug 'Xuyuanp/nerdtree-git-plugin'
+"Theme
+
+Plug 'vim-config/keymap'
+
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
@@ -134,6 +145,7 @@ endif
 call plug#end()
 
 "----------Plug插件管理结束-------
+
 let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ 'Modified'  :'✹',
                 \ 'Staged'    :'✚',
@@ -146,7 +158,8 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ 'Clean'     :'✔︎',
                 \ 'Unknown'   :'?',
                 \ }
-"coc config 
+
+"coc config  
 let g:coc_global_extensions = [
 	\ 'coc-actions',
 	\ 'coc-diagnostic',
@@ -212,10 +225,13 @@ nmap <leader>rn <Plug>(coc-rename)
 
 "coc config
 
+"autopairs
 let g:AutoPairsFlyMode = 1
 let g:AutoPairsShortcutBackInsert = '<M-b>'
+"autopairs
 
 let g:rainbow_active = 1 " 彩虹括号, 0代表关闭
+
 "Theme setting 
 syntax enable
 
@@ -293,12 +309,14 @@ let g:airline_theme='one'
 
 
 "wildfiel setting begin
+
 "leader+fs:快速选择
 nmap <leader>fs <Plug>(wildfire-quick-select)
 "map <leader>ss <Plug>(wildfire-fule)
 "vmap <leader>f<Plug>(wildfire-water)
 let g:wildfie_objects = ["i'", 'i"', "i)", "i]", "i}", "ip", "it","i<","i/*"]
 "wildfiel setting end 
+
 "auto-pairs begin
 let g:AutoPairs ={'(':')', '[':']', '{':'}',"'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''"} 
 let g:AutoPairsShortcutToggle = '<leader>p'
@@ -309,7 +327,7 @@ let g:AutoPairsShortcutToggle = '<leader>p'
 "显示行号
 let NERDTreeShowLineNumbers=1
 "auto running nerdtree
-autocmd vimEnter * NERDTree
+"autocmd vimEnter * NERDTree
 "use double leader key to open or close nerdtree 
 map <leader><leader> :NERDTreeToggle<CR>
 "nerdtree setting end
