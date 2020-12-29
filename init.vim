@@ -115,13 +115,13 @@ Plug 'hzchirs/vim-material'
 Plug 'mbbill/undotree'
 "Theme
 
-Plug 'vim-config/keymap'
+"Plug 'vim-config/keymap'
 
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'scrooloose/nerdtree'
-Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline' "状态栏
 Plug 'w0rp/ale'
 Plug 'jiangmiao/auto-pairs'
 Plug 'Yggdroot/indentLine'
@@ -147,7 +147,7 @@ call plug#end()
 "----------Plug插件管理结束-------
 
 let g:NERDTreeGitStatusIndicatorMapCustom = {
-                \ 'Modified'  :'✹',
+                \ 'Modified'  :'M',
                 \ 'Staged'    :'✚',
                 \ 'Untracked' :'✭',
                 \ 'Renamed'   :'➜',
@@ -301,7 +301,8 @@ colorscheme material
 "colorscheme snazzy
 
 "-airline_theme set 
-let g:airline_theme='one'
+"let g:airline_theme='one'
+let g:airline_theme='bubblegum'
 "let g:airline_theme='material'
 "-airline_theme set 
 
