@@ -112,97 +112,139 @@ Plug 'karoliskoncevicius/sacredforest-vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'rakr/vim-one'
 Plug 'hzchirs/vim-material'
-Plug 'mbbill/undotree'
 "Theme
 
 "Plug 'vim-config/keymap'
 
-Plug 'preservim/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'mbbill/undotree' "撤销树
+Plug 'preservim/nerdtree' "目录树
+Plug 'Xuyuanp/nerdtree-git-plugin' "目录树
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-airline/vim-airline' "状态栏
-Plug 'w0rp/ale'
-Plug 'jiangmiao/auto-pairs'
-Plug 'Yggdroot/indentLine'
-Plug 'vim-scripts/luainspect.vim'
-Plug 'xolox/vim-misc'
+Plug 'w0rp/ale'	"语法检查
+Plug 'jiangmiao/auto-pairs' "括号补全
+Plug 'Yggdroot/indentLine' "缩进线
+Plug 'vim-scripts/luainspect.vim'	"lua插件
+Plug 'xolox/vim-misc' "lua插件
 Plug 'gcmt/wildfire.vim'
 Plug 'tpope/vim-surround'
 Plug 'mg979/vim-visual-multi'
-Plug 'JamshedVesuna/vim-markdown-preview'
-Plug 'suan/vim-instant-markdown'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+Plug 'JamshedVesuna/vim-markdown-preview' "markdown 可视化插件
+Plug 'suan/vim-instant-markdown' "markdown 可视化插件
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } "vim fzf 插件
+Plug 'junegunn/fzf.vim' "vim fzf 插件
 if has('nvim')
-  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+	Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 else
-  Plug 'Shougo/defx.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
+	Plug 'Shougo/defx.nvim'
+	Plug 'roxma/nvim-yarp'
+	Plug 'roxma/vim-hug-neovim-rpc'
 endif
 "Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 call plug#end()
 
 "----------Plug插件管理结束-------
+"defx setting
+call defx#custom#option('_', {
+      \ 'winwidth': 30,
+      \ 'split': 'vertical',
+      \ 'direction': 'topleft',
+      \ 'show_ignored_files': 0,
+      \ 'buffer_name': '',
+      \ 'toggle': 1,
+      \ 'resume': 1
+      \ })
+"defx setting
+
+"vim surround use
+"1．ds-删除字串的包裹符号"aaa"---ds"---aaa
+"2．cs-替换字串的包裹符号"aaa"---cs"]---[aaa]
+"3．ys-添加字串的包裹符号aaa---ysw]---[aaa]
+"4.我们可以选中一个字串，然后使用Ｓ＋符号的方法来添加包裹符号
+"hello
+"vim surround use 
+
+"ale setting begin
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}\ %{ALEGetStatusLine()}
+"始终开启标志列
+let g:ale_sign_column_always = 1
+let g:ale_set_highlights = 0
+"自定义error和warning图标
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚡'
+"在vim自带的状态栏中整合ale
+let g:ale_statusline_format = ['✗ %d', '⚡ %d', '✔ OK']
+"显示Linter名称,出错或警告等相关信息
+let g:ale_echo_msg_error_str = '✗' 
+let g:ale_echo_msg_warning_str = '⚡'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+"普通模式下，sp前往上一个错误或警告，sn前往下一个错误或警告
+nmap sp <Plug>(ale_previous_wrap)
+nmap sn <Plug>(ale_next_wrap)
+""<Leader>s触发/关闭语法检查
+"nmap <Leader>s :ALEToggle<CR>
+""<Leader>d查看错误或警告的详细信息
+"nmap <Leader>d :ALEDetail<CR>
+"ale setting end 
 
 let g:NERDTreeGitStatusIndicatorMapCustom = {
-                \ 'Modified'  :'M',
-                \ 'Staged'    :'✚',
-                \ 'Untracked' :'✭',
-                \ 'Renamed'   :'➜',
-                \ 'Unmerged'  :'═',
-                \ 'Deleted'   :'✖',
-                \ 'Dirty'     :'✗',
-                \ 'Ignored'   :'☒',
-                \ 'Clean'     :'✔︎',
-                \ 'Unknown'   :'?',
-                \ }
+			\ 'Modified'  :'M',
+			\ 'Staged'    :'✚',
+			\ 'Untracked' :'✭',
+			\ 'Renamed'   :'➜',
+			\ 'Unmerged'  :'═',
+			\ 'Deleted'   :'✖',
+			\ 'Dirty'     :'✗',
+			\ 'Ignored'   :'☒',
+			\ 'Clean'     :'✔︎',
+			\ 'Unknown'   :'?',
+			\ }
 
 "coc config  
 let g:coc_global_extensions = [
-	\ 'coc-actions',
-	\ 'coc-diagnostic',
-	\ 'coc-explorer',
-	\ 'coc-gitignore',
-	\ 'coc-json',
-	\ 'coc-lists',
-	\ 'coc-prettier',
-	\ 'coc-python',
-	\ 'coc-snippets',
-	\ 'coc-sourcekit',
-	\ 'coc-syntax',
-	\ 'coc-tasks',
-	\ 'coc-todolist',
-	\ 'coc-tslint-plugin',
-	\ 'coc-tsserver',
-	\ 'coc-vimlsp']
+			\ 'coc-actions',
+			\ 'coc-diagnostic',
+			\ 'coc-explorer',
+			\ 'coc-gitignore',
+			\ 'coc-json',
+			\ 'coc-lists',
+			\ 'coc-prettier',
+			\ 'coc-python',
+			\ 'coc-snippets',
+			\ 'coc-sourcekit',
+			\ 'coc-syntax',
+			\ 'coc-tasks',
+			\ 'coc-todolist',
+			\ 'coc-tslint-plugin',
+			\ 'coc-tsserver',
+			\ 'coc-vimlsp']
 
 set updatetime=100
 
 if has("patch-8.1.1564")
-  set signcolumn=number
+	set signcolumn=number
 else
-  set signcolumn=yes
+	set signcolumn=yes
 endif
 
 set shortmess+=c
 
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+			\ pumvisible() ? "\<C-n>" :
+			\ <SID>check_back_space() ? "\<TAB>" :
+			\ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+	let col = col('.') - 1
+	return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
+	inoremap <silent><expr> <c-space> coc#refresh()
 else
-  inoremap <silent><expr> <c-space> coc#refresh()
+	inoremap <silent><expr> <c-space> coc#refresh()
 endif
 
 nmap <silent> <c--> <Plug>(coc-diagnostic-prev)
@@ -237,11 +279,11 @@ syntax enable
 
 "-material
 if (has('nvim'))
-  let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
+	let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
 endif
 
 if (has('termguicolors'))
-  set termguicolors
+	set termguicolors
 endif
 "let g:material_theme_style = 'default'
 "let g:material_theme_style = 'darker-community'
@@ -302,8 +344,7 @@ colorscheme material
 
 "-airline_theme set 
 "let g:airline_theme='one'
-let g:airline_theme='bubblegum'
-"let g:airline_theme='material'
+let g:airline_theme='material'
 "-airline_theme set 
 
 "Theme setting 
@@ -315,7 +356,7 @@ let g:airline_theme='bubblegum'
 nmap <leader>fs <Plug>(wildfire-quick-select)
 "map <leader>ss <Plug>(wildfire-fule)
 "vmap <leader>f<Plug>(wildfire-water)
-let g:wildfie_objects = ["i'", 'i"', "i)", "i]", "i}", "ip", "it","i<","i/*"]
+let g:wildfie_objects = ["i'", 'i"', "i)", "i]", "i}", "ip", "it","i>","i/*"]
 "wildfiel setting end 
 
 "auto-pairs begin
@@ -336,37 +377,42 @@ map <leader><leader> :NERDTreeToggle<CR>
 "undotree setting
 map <leader>ud :UndotreeToggle<CR>
 "undotree setting
+"undotree test
+"this is a undotree test 
+"this is a undotree test 
+"this is a undotree test 
+"undotree test
 
 "f5 自动执行代码
 map <F5> :call CompileRunGcc()<CR>
 map CI :CocInstall
 func! CompileRunGcc()
-        exec "w"
-        if &filetype == 'c'
-                exec "!gcc % -o %<"
-                exec "!time ./%<"
-        elseif &filetype == 'cpp'
-                exec "!g++ % -o %<"
-                exec "!time ./%<"
-        elseif &filetype == 'java'
-                exec "!javac %"
-                exec "!time java %<"
-        elseif &filetype == 'sh'
-                :!time bash %
-        elseif &filetype == 'python'
-                exec "!clear"
-                exec "!time python3 %"
-        elseif &filetype == 'html'
-                exec "!firefox % &"
-        elseif &filetype == 'go'
-                " exec "!go build %<"
-                exec "!time go run %"
-        elseif &filetype == 'mkd'
-                exec "!~/.vim/markdown.pl % > %.html &"
-                exec "!firefox %.html &"
-		elseif &filetype == 'lua'
-                exec "!lua %"
-        endif
+	exec "w"
+	if &filetype == 'c'
+		exec "!gcc % -o %<"
+		exec "!time ./%<"
+	elseif &filetype == 'cpp'
+		exec "!g++ % -o %<"
+		exec "!time ./%<"
+	elseif &filetype == 'java'
+		exec "!javac %"
+		exec "!time java %<"
+	elseif &filetype == 'sh'
+		:!time bash %
+	elseif &filetype == 'python'
+		exec "!clear"
+		exec "!time python3 %"
+	elseif &filetype == 'html'
+		exec "!firefox % &"
+	elseif &filetype == 'go'
+		" exec "!go build %<"
+		exec "!time go run %"
+	elseif &filetype == 'mkd'
+		exec "!~/.vim/markdown.pl % > %.html &"
+		exec "!firefox %.html &"
+	elseif &filetype == 'lua'
+		exec "!lua %"
+	endif
 endfunc
 "f5 自动执行代码
 
