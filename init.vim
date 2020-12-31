@@ -134,6 +134,7 @@ Plug 'JamshedVesuna/vim-markdown-preview' "markdown 可视化插件
 Plug 'suan/vim-instant-markdown' "markdown 可视化插件
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } "vim fzf 插件
 Plug 'junegunn/fzf.vim' "vim fzf 插件
+"新目录树
 if has('nvim')
 	Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 else
