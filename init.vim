@@ -151,21 +151,18 @@ endif
 call plug#end()
 
 "----------Plug插件管理结束-------
+
+"indentLine
+let g:indentLine_char='|'
+let g:indentLine_enabled = 1
+
 "gitgutter
 let g:gitgutter_terminal_reports_focus=0
-
-"defx setting
-call defx#custom#option('_', {
-			\ 'winwidth': 30,
-			\ 'split': 'vertical',
-			\ 'direction': 'topleft',
-			\ 'show_ignored_files': 0,
-			\ 'buffer_name': '',
-			\ 'toggle': 1,
-			\ 'resume': 1
-			\ })
-"defx setting
-
+let g:gitgutter_max_signs = 500  " default value (Vim < 8.1.0614, Neovim < 0.4.0)
+"let g:gitgutter_max_signs = -1   "default value (otherwise)
+set signcolumn =no
+let g:gitgutter_highlight_linenrs = 1
+let g:gitgutter_preview_win_floating = 1
 "vim surround use
 "1．ds-删除字串的包裹符号"aaa"---ds"---aaa
 "2．cs-替换字串的包裹符号"aaa"---cs"]---[aaa]
@@ -228,12 +225,13 @@ let g:coc_global_extensions = [
 			\ 'coc-tslint-plugin',
 			\ 'coc-tsserver',
 			\ 'coc-vimlsp']
+
 set updatetime=100
 
 if has("patch-8.1.1564")
 	set signcolumn=number
 else
-	set signcolumn=yes
+"	set signcolumn=yes
 endif
 
 set shortmess+=c
@@ -250,9 +248,9 @@ function! s:check_back_space() abort
 endfunction
 
 if has('nvim')
-	inoremap <silent><expr> <c-space> coc#refresh()
+	inoremap <silent><expr> <c-o> coc#refresh()
 else
-	inoremap <silent><expr> <c-space> coc#refresh()
+	inoremap <silent><expr> <c-o> coc#refresh()
 endif
 
 nmap <silent> <c--> <Plug>(coc-diagnostic-prev)
