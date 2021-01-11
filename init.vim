@@ -119,7 +119,7 @@ Plug 'hzchirs/vim-material'
 Plug 'mbbill/undotree' "撤销树
 Plug 'preservim/nerdtree' "目录树
 Plug 'scrooloose/nerdcommenter' "快速注释
-Plug 'airblade/vim-gitgutter' "git修改提醒
+Plug 'mhinz/vim-signify' "git修改提醒
 Plug 'Xuyuanp/nerdtree-git-plugin' "目录树
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'vim-airline/vim-airline-themes'
@@ -156,13 +156,9 @@ call plug#end()
 let g:indentLine_char='|'
 let g:indentLine_enabled = 1
 
-"gitgutter
-let g:gitgutter_terminal_reports_focus=0
-let g:gitgutter_max_signs = 500  " default value (Vim < 8.1.0614, Neovim < 0.4.0)
-"let g:gitgutter_max_signs = -1   "default value (otherwise)
-set signcolumn =no
-let g:gitgutter_highlight_linenrs = 1
-let g:gitgutter_preview_win_floating = 1
+"vim-signify
+set updatetime=100
+
 "vim surround use
 "1．ds-删除字串的包裹符号"aaa"---ds"---aaa
 "2．cs-替换字串的包裹符号"aaa"---cs"]---[aaa]
@@ -228,11 +224,7 @@ let g:coc_global_extensions = [
 
 set updatetime=100
 
-if has("patch-8.1.1564")
-	set signcolumn=number
-else
-"	set signcolumn=yes
-endif
+set signcolumn=yes
 
 set shortmess+=c
 

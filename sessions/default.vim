@@ -14,7 +14,7 @@ inoremap <expr> <Plug>(fzf-complete-word) fzf#vim#complete#word()
 imap <C-G>S <Plug>ISurround
 imap <C-G>s <Plug>Isurround
 imap <C-S> <Plug>Isurround
-inoremap <silent> <SNR>54_AutoPairsReturn =AutoPairsReturn()
+inoremap <silent> <SNR>52_AutoPairsReturn =AutoPairsReturn()
 inoremap <silent> <Plug>(ale_complete) :ALEComplete
 inoremap <silent> <Plug>CocRefresh =coc#_complete()
 inoremap <silent> <Plug>NERDCommenterInsert  <BS>:call NERDComment('i', 'insert')
@@ -63,6 +63,8 @@ xmap S <Plug>VSurround
 nmap S :w!
 smap S :w!
 omap S :w!
+nmap [C 9999[c
+nmap [c <Plug>(signify-prev-hunk)
 xmap <nowait> \\c <Plug>(VM-Visual-Cursors)
 nmap <nowait> \\gS <Plug>(VM-Reselect-Last)
 nmap <nowait> \\/ <Plug>(VM-Start-Regex-Search)
@@ -72,6 +74,8 @@ xmap <nowait> \\f <Plug>(VM-Visual-Find)
 xmap <nowait> \\/ <Plug>(VM-Visual-Regex)
 xmap <nowait> \\A <Plug>(VM-Visual-All)
 nmap <nowait> \\A <Plug>(VM-Select-All)
+nmap ]C 9999]c
+nmap ]c <Plug>(signify-next-hunk)
 nmap cS <Plug>CSurround
 nmap cs <Plug>Csurround
 nmap ds <Plug>Dsurround
@@ -231,22 +235,12 @@ nnoremap <Plug>(coc-codelens-action) :call       CocActionAsync('codeLensActio
 nnoremap <Plug>(coc-range-select) :call       CocActionAsync('rangeSelect',     '', v:true)
 vnoremap <silent> <Plug>(coc-range-select-backward) :call       CocActionAsync('rangeSelect',     visualmode(), v:false)
 vnoremap <silent> <Plug>(coc-range-select) :call       CocActionAsync('rangeSelect',     visualmode(), v:true)
-nnoremap <silent> <Plug>GitGutterPreviewHunk :call gitgutter#utility#warn('please change your map <Plug>GitGutterPreviewHunk to <Plug>(GitGutterPreviewHunk)')
-nnoremap <silent> <Plug>(GitGutterPreviewHunk) :GitGutterPreviewHunk
-nnoremap <silent> <Plug>GitGutterUndoHunk :call gitgutter#utility#warn('please change your map <Plug>GitGutterUndoHunk to <Plug>(GitGutterUndoHunk)')
-nnoremap <silent> <Plug>(GitGutterUndoHunk) :GitGutterUndoHunk
-nnoremap <silent> <Plug>GitGutterStageHunk :call gitgutter#utility#warn('please change your map <Plug>GitGutterStageHunk to <Plug>(GitGutterStageHunk)')
-nnoremap <silent> <Plug>(GitGutterStageHunk) :GitGutterStageHunk
-xnoremap <silent> <Plug>GitGutterStageHunk :call gitgutter#utility#warn('please change your map <Plug>GitGutterStageHunk to <Plug>(GitGutterStageHunk)')
-xnoremap <silent> <Plug>(GitGutterStageHunk) :GitGutterStageHunk
-nnoremap <silent> <expr> <Plug>GitGutterPrevHunk &diff ? '[c' : ":\call gitgutter#utility#warn('please change your map \<Plug>GitGutterPrevHunk to \<Plug>(GitGutterPrevHunk)')\"
-nnoremap <silent> <expr> <Plug>(GitGutterPrevHunk) &diff ? '[c' : ":\execute v:count1 . 'GitGutterPrevHunk'\"
-nnoremap <silent> <expr> <Plug>GitGutterNextHunk &diff ? ']c' : ":\call gitgutter#utility#warn('please change your map \<Plug>GitGutterNextHunk to \<Plug>(GitGutterNextHunk)')\"
-nnoremap <silent> <expr> <Plug>(GitGutterNextHunk) &diff ? ']c' : ":\execute v:count1 . 'GitGutterNextHunk'\"
-xnoremap <silent> <Plug>(GitGutterTextObjectOuterVisual) :call gitgutter#hunk#text_object(0)
-xnoremap <silent> <Plug>(GitGutterTextObjectInnerVisual) :call gitgutter#hunk#text_object(1)
-onoremap <silent> <Plug>(GitGutterTextObjectOuterPending) :call gitgutter#hunk#text_object(0)
-onoremap <silent> <Plug>(GitGutterTextObjectInnerPending) :call gitgutter#hunk#text_object(1)
+xnoremap <silent> <Plug>(signify-motion-outer-visual) :call sy#util#hunk_text_object(1)
+onoremap <silent> <Plug>(signify-motion-outer-pending) :call sy#util#hunk_text_object(1)
+xnoremap <silent> <Plug>(signify-motion-inner-visual) :call sy#util#hunk_text_object(0)
+onoremap <silent> <Plug>(signify-motion-inner-pending) :call sy#util#hunk_text_object(0)
+nnoremap <silent> <expr> <Plug>(signify-prev-hunk) &diff ? '[c' : ":\call sy#jump#prev_hunk(v:count1)\"
+nnoremap <silent> <expr> <Plug>(signify-next-hunk) &diff ? ']c' : ":\call sy#jump#next_hunk(v:count1)\"
 xnoremap <silent> <Plug>NERDCommenterUncomment :call NERDComment("x", "Uncomment")
 nnoremap <silent> <Plug>NERDCommenterUncomment :call NERDComment("n", "Uncomment")
 xnoremap <silent> <Plug>NERDCommenterAlignBoth :call NERDComment("x", "AlignBoth")
@@ -286,6 +280,7 @@ set paste
 set background=dark
 set backspace=indent,eol,start
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+set helplang=en
 set ignorecase
 set incsearch
 set laststatus=2
@@ -293,7 +288,7 @@ set listchars=eol:$,tab:>-
 set nomodeline
 set mouse=a
 set ruler
-set runtimepath=~/.config/coc/extensions/node_modules/coc-todolist,~/.vim,~/.vim/plugged/material.vim,~/.vim/plugged/vim-material,~/.vim/plugged/tender.vim,~/.vim/plugged/vim-snazzy,~/.vim/plugged/vim-vscode-theme,~/.vim/plugged/darcula,~/.vim/plugged/vim,~/.vim/plugged/seoul256.vim,~/.vim/plugged/sacredforest-vim,~/.vim/plugged/nord-vim,~/.vim/plugged/vim-one,~/.vim/plugged/undotree,~/.vim/plugged/nerdtree,~/.vim/plugged/nerdcommenter,~/.vim/plugged/vim-gitgutter,~/.vim/plugged/nerdtree-git-plugin,~/.vim/plugged/coc.nvim,~/.vim/plugged/vim-airline,~/.vim/plugged/ale,~/.vim/plugged/auto-pairs,~/.vim/plugged/indentLine,~/.vim/plugged/luainspect.vim,~/.vim/plugged/vim-misc,~/.vim/plugged/wildfire.vim,~/.vim/plugged/vim-surround,~/.vim/plugged/vim-visual-multi,~/.vim/plugged/rainbow,~/.vim/plugged/vim-markdown-preview,~/.vim/plugged/vim-instant-markdown,~/.vim/plugged/fzf,~/.vim/plugged/fzf.vim,~/.vim/plugged/defx.nvim,~/.vim/plugged/nvim-yarp,~/.vim/plugged/vim-hug-neovim-rpc,/var/lib/vim/addons,/etc/vim,/usr/share/vim/vimfiles,/usr/share/vim/vim81,/usr/share/vim/vimfiles/after,/etc/vim/after,/var/lib/vim/addons/after,~/.vim/plugged/vim/after,~/.vim/plugged/nerdtree-git-plugin/after,~/.vim/plugged/indentLine/after,~/.vim/plugged/vim-instant-markdown/after,~/.vim/after,~/.config/coc/extensions/node_modules/coc-explorer,~/.config/coc/extensions/node_modules/coc-snippets
+set runtimepath=~/.config/coc/extensions/node_modules/coc-todolist,~/.vim,~/.vim/plugged/material.vim,~/.vim/plugged/vim-material,~/.vim/plugged/tender.vim,~/.vim/plugged/vim-snazzy,~/.vim/plugged/vim-vscode-theme,~/.vim/plugged/darcula,~/.vim/plugged/vim,~/.vim/plugged/seoul256.vim,~/.vim/plugged/sacredforest-vim,~/.vim/plugged/nord-vim,~/.vim/plugged/vim-one,~/.vim/plugged/undotree,~/.vim/plugged/nerdtree,~/.vim/plugged/nerdcommenter,~/.vim/plugged/vim-signify,~/.vim/plugged/nerdtree-git-plugin,~/.vim/plugged/coc.nvim,~/.vim/plugged/vim-airline,~/.vim/plugged/ale,~/.vim/plugged/auto-pairs,~/.vim/plugged/indentLine,~/.vim/plugged/luainspect.vim,~/.vim/plugged/vim-misc,~/.vim/plugged/wildfire.vim,~/.vim/plugged/vim-surround,~/.vim/plugged/vim-visual-multi,~/.vim/plugged/rainbow,~/.vim/plugged/vim-markdown-preview,~/.vim/plugged/vim-instant-markdown,~/.vim/plugged/fzf,~/.vim/plugged/fzf.vim,~/.vim/plugged/defx.nvim,~/.vim/plugged/nvim-yarp,~/.vim/plugged/vim-hug-neovim-rpc,/var/lib/vim/addons,/etc/vim,/usr/share/vim/vimfiles,/usr/share/vim/vim81,/usr/share/vim/vimfiles/after,/etc/vim/after,/var/lib/vim/addons/after,~/.vim/plugged/vim/after,~/.vim/plugged/nerdtree-git-plugin/after,~/.vim/plugged/indentLine/after,~/.vim/plugged/vim-instant-markdown/after,~/.vim/after,~/.config/coc/extensions/node_modules/coc-explorer,~/.config/coc/extensions/node_modules/coc-snippets
 set selection=exclusive
 set selectmode=mouse,key
 set shiftwidth=4
@@ -347,10 +342,6 @@ nnoremap <buffer> <silent> <NL> :call nerdtree#ui_glue#invokeKeyMap("<C-j>")
 nnoremap <buffer> <silent>  :call nerdtree#ui_glue#invokeKeyMap("<C-k>")
 nnoremap <buffer> <silent>  :call nerdtree#ui_glue#invokeKeyMap("<CR>")
 noremap <buffer> <silent>  p :call AutoPairsToggle()
-nmap <buffer>  hp <Plug>(GitGutterPreviewHunk)
-nmap <buffer>  hu <Plug>(GitGutterUndoHunk)
-nmap <buffer>  hs <Plug>(GitGutterStageHunk)
-xmap <buffer>  hs <Plug>(GitGutterStageHunk)
 nnoremap <buffer> <silent> ? :call nerdtree#ui_glue#invokeKeyMap("?")
 nnoremap <buffer> <silent> A :call nerdtree#ui_glue#invokeKeyMap("A")
 nnoremap <buffer> <silent> B :call nerdtree#ui_glue#invokeKeyMap("B")
@@ -380,8 +371,6 @@ nnoremap <buffer> <silent> U :call nerdtree#ui_glue#invokeKeyMap("U")
 nnoremap <buffer> <silent> X :call nerdtree#ui_glue#invokeKeyMap("X")
 nnoremap <buffer> <silent> [c :call nerdtree#ui_glue#invokeKeyMap("[c")
 nnoremap <buffer> <silent> ]c :call nerdtree#ui_glue#invokeKeyMap("]c")
-xmap <buffer> ac <Plug>(GitGutterTextObjectOuterVisual)
-omap <buffer> ac <Plug>(GitGutterTextObjectOuterPending)
 nnoremap <buffer> <silent> cd :call nerdtree#ui_glue#invokeKeyMap("cd")
 nnoremap <buffer> <silent> e :call nerdtree#ui_glue#invokeKeyMap("e")
 nnoremap <buffer> <silent> f :call nerdtree#ui_glue#invokeKeyMap("f")
@@ -389,8 +378,6 @@ nnoremap <buffer> <silent> go :call nerdtree#ui_glue#invokeKeyMap("go")
 nnoremap <buffer> <silent> gi :call nerdtree#ui_glue#invokeKeyMap("gi")
 nnoremap <buffer> <silent> gs :call nerdtree#ui_glue#invokeKeyMap("gs")
 nnoremap <buffer> <silent> i :call nerdtree#ui_glue#invokeKeyMap("i")
-xmap <buffer> ic <Plug>(GitGutterTextObjectInnerVisual)
-omap <buffer> ic <Plug>(GitGutterTextObjectInnerPending)
 nnoremap <buffer> <silent> m :call nerdtree#ui_glue#invokeKeyMap("m")
 nnoremap <buffer> <silent> o :call nerdtree#ui_glue#invokeKeyMap("o")
 nnoremap <buffer> <silent> p :call nerdtree#ui_glue#invokeKeyMap("p")
@@ -430,7 +417,7 @@ setlocal nobinary
 setlocal nobreakindent
 setlocal breakindentopt=
 setlocal bufhidden=hide
-setlocal buflisted
+setlocal nobuflisted
 setlocal buftype=nofile
 setlocal nocindent
 setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
@@ -514,8 +501,8 @@ setlocal scrolloff=-1
 setlocal shiftwidth=4
 setlocal noshortname
 setlocal sidescrolloff=-1
-set signcolumn=number
-setlocal signcolumn=number
+set signcolumn=yes
+setlocal signcolumn=yes
 setlocal nosmartindent
 setlocal softtabstop=0
 setlocal nospell
@@ -548,9 +535,8 @@ setlocal winfixwidth
 setlocal nowrap
 setlocal wrapmargin=0
 tabnext 1
-badd +236 init.vim
-badd +1 NERD_tree_1
-badd +1 ~/goProject/NERD_tree_1
+badd +400 init.vim
+badd +87 sessions/default.vim
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif
@@ -562,7 +548,6 @@ if file_readable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &so = s:so_save | let &siso = s:siso_save
-nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :
