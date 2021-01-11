@@ -14,11 +14,11 @@ inoremap <expr> <Plug>(fzf-complete-word) fzf#vim#complete#word()
 imap <C-G>S <Plug>ISurround
 imap <C-G>s <Plug>Isurround
 imap <C-S> <Plug>Isurround
-inoremap <silent> <SNR>56_AutoPairsReturn =AutoPairsReturn()
+inoremap <silent> <SNR>54_AutoPairsReturn =AutoPairsReturn()
 inoremap <silent> <Plug>(ale_complete) :ALEComplete
 inoremap <silent> <Plug>CocRefresh =coc#_complete()
 inoremap <silent> <Plug>NERDCommenterInsert  <BS>:call NERDComment('i', 'insert')
-inoremap <silent> <expr> <C-Space> coc#refresh()
+inoremap <silent> <expr> <C-O> coc#refresh()
 inoremap <expr> <S-Tab> pumvisible() ? "\" : "\"
 map  :/
 map  <Plug>(wildfire-fuel)
@@ -277,6 +277,7 @@ map <C-F> :/
 map <C-Z> <Nop>
 imap S <Plug>ISurround
 imap s <Plug>Isurround
+inoremap <silent> <expr>  coc#refresh()
 imap  <Plug>Isurround
 inoremap jk 
 let &cpo=s:cpo_save
@@ -429,7 +430,7 @@ setlocal nobinary
 setlocal nobreakindent
 setlocal breakindentopt=
 setlocal bufhidden=hide
-setlocal nobuflisted
+setlocal buflisted
 setlocal buftype=nofile
 setlocal nocindent
 setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
@@ -547,7 +548,9 @@ setlocal winfixwidth
 setlocal nowrap
 setlocal wrapmargin=0
 tabnext 1
-badd +301 sessions/default.vim
+badd +236 init.vim
+badd +1 NERD_tree_1
+badd +1 ~/goProject/NERD_tree_1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif
