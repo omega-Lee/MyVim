@@ -118,6 +118,8 @@ Plug 'hzchirs/vim-material'
 
 Plug 'mbbill/undotree' "撤销树
 Plug 'preservim/nerdtree' "目录树
+Plug 'scrooloose/nerdcommenter' "快速注释
+Plug 'airblade/vim-gitgutter' "git修改提醒
 Plug 'Xuyuanp/nerdtree-git-plugin' "目录树
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'vim-airline/vim-airline-themes'
@@ -130,10 +132,12 @@ Plug 'xolox/vim-misc' "lua插件
 Plug 'gcmt/wildfire.vim'
 Plug 'tpope/vim-surround'
 Plug 'mg979/vim-visual-multi'
+Plug 'luochen1990/rainbow'
 Plug 'JamshedVesuna/vim-markdown-preview' "markdown 可视化插件
 Plug 'suan/vim-instant-markdown' "markdown 可视化插件
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } "vim fzf 插件
 Plug 'junegunn/fzf.vim' "vim fzf 插件
+
 "新目录树
 if has('nvim')
 	Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -142,20 +146,24 @@ else
 	Plug 'roxma/nvim-yarp'
 	Plug 'roxma/vim-hug-neovim-rpc'
 endif
+
 "Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 call plug#end()
 
 "----------Plug插件管理结束-------
+"gitgutter
+let g:gitgutter_terminal_reports_focus=0
+
 "defx setting
 call defx#custom#option('_', {
-      \ 'winwidth': 30,
-      \ 'split': 'vertical',
-      \ 'direction': 'topleft',
-      \ 'show_ignored_files': 0,
-      \ 'buffer_name': '',
-      \ 'toggle': 1,
-      \ 'resume': 1
-      \ })
+			\ 'winwidth': 30,
+			\ 'split': 'vertical',
+			\ 'direction': 'topleft',
+			\ 'show_ignored_files': 0,
+			\ 'buffer_name': '',
+			\ 'toggle': 1,
+			\ 'resume': 1
+			\ })
 "defx setting
 
 "vim surround use
@@ -220,7 +228,6 @@ let g:coc_global_extensions = [
 			\ 'coc-tslint-plugin',
 			\ 'coc-tsserver',
 			\ 'coc-vimlsp']
-
 set updatetime=100
 
 if has("patch-8.1.1564")
@@ -273,7 +280,31 @@ let g:AutoPairsFlyMode = 1
 let g:AutoPairsShortcutBackInsert = '<M-b>'
 "autopairs
 
-let g:rainbow_active = 1 " 彩虹括号, 0代表关闭
+"rainbow
+let g:rainbow_active = 1
+
+let g:rainbow_conf = {
+\   'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+\   'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+\   'operators': '_,_',
+\   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+\   'separately': {
+\       '*': {},
+\       'tex': {
+\           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
+\       },
+\       'lisp': {
+\           'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
+\       },
+\       'vim': {
+\           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
+\       },
+\       'html': {
+\           'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+\       },
+\       'css': 0,
+\   }
+\}
 
 "Theme setting 
 syntax enable
