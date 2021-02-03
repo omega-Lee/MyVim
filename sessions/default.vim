@@ -2,12 +2,12 @@ let SessionLoad = 1
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
-cd ~/github/vim-config
+cd ~/github
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +405 init.vim
+badd +409 vim-config/init.vim
 argglobal
 %argdel
 set splitbelow splitright

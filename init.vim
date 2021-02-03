@@ -406,7 +406,6 @@ let g:AutoPairsShortcutBackInsert = '<c-b>'
 
 let g:AutoPairs ={'(':')', '[':']', '{':'}',"'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''"} 
 let g:AutoPairsShortcutToggle = '<leader>p'
-let b:AutoPairs = g:AutoParis
 
 "auto-pairs end
 
