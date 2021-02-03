@@ -116,6 +116,17 @@ Plug 'hzchirs/vim-material'
 
 "Plug 'vim-config/keymap'
 
+Plug 'junegunn/vim-easy-align'   " 代码格式化
+
+Plug 'ryanoasis/vim-devicons'
+set encoding=UTF-8
+
+Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }  "异步显示文件颜色代码
+Plug 'RRethy/vim-illuminate'
+let g:Hexokinase_highlighters = ['virtual']
+let g:Illuminate_delay = 150
+hi illuminatedWord cterm=undercurl gui=undercurl
+
 Plug 'mbbill/undotree' "撤销树
 Plug 'preservim/nerdtree' "目录树
 Plug 'scrooloose/nerdcommenter' "快速注释
