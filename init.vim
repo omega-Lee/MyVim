@@ -114,7 +114,18 @@ Plug 'rakr/vim-one'
 Plug 'hzchirs/vim-material'
 "Theme
 
-"Plug 'vim-config/keymap'
+Plug 'Raimondi/delimitMate'
+
+Plug 'junegunn/vim-easy-align'   " 代码格式化
+
+Plug 'ryanoasis/vim-devicons' "图标 需要powerline字体
+set encoding=UTF-8
+
+Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }  "异步显示文件颜色代码
+Plug 'RRethy/vim-illuminate'
+let g:Hexokinase_highlighters = ['virtual']
+let g:Illuminate_delay = 150
+hi illuminatedWord cterm=undercurl gui=undercurl
 
 Plug 'mbbill/undotree' "撤销树
 Plug 'preservim/nerdtree' "目录树
@@ -265,10 +276,6 @@ nmap <leader>rn <Plug>(coc-rename)
 
 "coc config
 
-"autopairs
-let g:AutoPairsFlyMode = 1
-let g:AutoPairsShortcutBackInsert = '<M-b>'
-"autopairs
 
 "rainbow
 let g:rainbow_active = 1
@@ -381,9 +388,25 @@ nmap <leader>fs <Plug>(wildfire-quick-select)
 let g:wildfie_objects = ["i'", 'i"', "i)", "i]", "i}", "ip", "it","i>","i/*"]
 "wildfiel setting end 
 
+set tabstop=4
+
+inoremap " ""<ESC>i    
+
+inoremap ( ()<ESC>i
+
+inoremap { {<CR>}<ESC>O<TAB>
+
+
+
+
 "auto-pairs begin
+
+let g:AutoPairsFlyMode = 1
+let g:AutoPairsShortcutBackInsert = '<c-b>'
+
 let g:AutoPairs ={'(':')', '[':']', '{':'}',"'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''"} 
 let g:AutoPairsShortcutToggle = '<leader>p'
+
 "auto-pairs end
 
 
