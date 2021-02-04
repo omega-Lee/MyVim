@@ -231,7 +231,8 @@ let g:coc_global_extensions = [
 			\ 'coc-todolist',
 			\ 'coc-tslint-plugin',
 			\ 'coc-tsserver',
-			\ 'coc-vimlsp']
+			\ 'coc-vimlsp',
+			\ 'coc-pairs']
 
 set updatetime=100
 

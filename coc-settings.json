@@ -61,17 +61,7 @@
 	"list.previewHighlightGroup": "Statement",
 	"list.nextKeymap": "<C-e>",
 	"list.previousKeymap": "<C-u>",
-	"coc.preferences.formatOnSaveFiletypes": [
-		"javascript",
-		"typescript",
-		"html",
-		"css",
-		"json",
-		"python",
-		"vue",
-		"svelte",
-		"c"
-	],
+	"coc.preferences.formatOnSaveFiletypes": ["typescript", "json", "python", "c", "go,"],
 	"signature.target": "float",
 	"typescript.suggestionActions.enabled": true,
 	"typescript.format.enabled": true,
@@ -114,6 +104,7 @@
 	"todolist.promptForReminder": false,
 	"coc-actions.hideCursor": false,
 	"coc-actions.showActionKind": true,
+	"pairs-enableCharacters": true,
 	"languageserver": {
 		"lua": {
 			"command": "lua-lsp",
@@ -137,7 +128,7 @@
 		},
 		"ccls": {
 			"command": "ccls",
-			"filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
+			"filetypes": ["cc,c", "cpp", "cuda", "objc", "objcpp"],
 			"rootPatterns": [".ccls", ".ccls-root", "compile_commands.json", ".git/", ".hg/"],
 			"initializationOptions": {
 				"cache": {
