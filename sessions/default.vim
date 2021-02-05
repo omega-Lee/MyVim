@@ -2,12 +2,12 @@ let SessionLoad = 1
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
-cd ~/vim-config/sessions
+cd ~/cmake-test
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +44 default.vim
+badd +6 demo3/main.c
 argglobal
 %argdel
 set splitbelow splitright

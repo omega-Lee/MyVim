@@ -114,12 +114,14 @@ Plug 'rakr/vim-one'
 Plug 'hzchirs/vim-material'
 "Theme
 
+Plug 'skywind3000/vim-auto-popmenu' "代码补全
+Plug 'skywind3000/vim-dict' "字典
 Plug 'Raimondi/delimitMate'
 
 Plug 'junegunn/vim-easy-align'   " 代码格式化
 
-Plug 'ryanoasis/vim-devicons' "图标 需要powerline字体
-set encoding=UTF-8
+"Plug 'ryanoasis/vim-devicons' "图标 需要powerline字体
+"set encoding=UTF-8
 
 Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }  "异步显示文件颜色代码
 Plug 'RRethy/vim-illuminate'
@@ -148,6 +150,18 @@ Plug 'JamshedVesuna/vim-markdown-preview' "markdown 可视化插件
 Plug 'suan/vim-instant-markdown' "markdown 可视化插件
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } "vim fzf 插件
 Plug 'junegunn/fzf.vim' "vim fzf 插件
+
+"vim-auto-popmenu
+" 设定需要生效的文件类型，如果是 "*" 的话，代表所有类型
+"let g:apc_enable_ft = {'*':1}
+let g:apc_enable_ft = {'c':1,'cpp':1,'go':1,'py':1}
+" 设定从字典文件以及当前打开的文件里收集补全单词，详情看 ':help cpt'
+set cpt=.,k,w,b
+" 不要自动选中第一个选项。
+set completeopt=menu,menuone,noselect
+" 禁止在下方显示一些啰嗦的提示
+set shortmess+=c
+
 
 "新目录树
 if has('nvim')
