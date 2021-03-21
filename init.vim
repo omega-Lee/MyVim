@@ -163,13 +163,9 @@ set completeopt=menu,menuone,noselect
 set shortmess+=c
 
 
-"新目录树
 if has('nvim')
-	Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 else
-	Plug 'Shougo/defx.nvim'
-	Plug 'roxma/nvim-yarp'
-	Plug 'roxma/vim-hug-neovim-rpc'
+
 endif
 
 "Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
@@ -228,6 +224,7 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 			\ 'Unknown'   :'?',
 			\ }
 
+if has('nvim')
 "coc config  
 let g:coc_global_extensions = [
 			\ 'coc-actions',
@@ -318,6 +315,7 @@ let g:rainbow_conf = {
 \   }
 \}
 
+endif
 "Theme setting 
 syntax enable
 

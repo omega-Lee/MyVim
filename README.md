@@ -2,11 +2,8 @@
 # 我的vim配置文件,持续更新  
 # 项目自带plug-vim  
 # 使用方法：
-## clone下我的项目，为vimrc创建软链接 移动autoload文件夹，使vimplug生效 
-> ***sudo git clone https://github.com/omega-Lee/vim-config***  
-> ***ln -s -f ~/vim-config/vimrc ~/.vim/vimrc***     
-把autoload文件移到.vim/下:  
-> ***cp -r ~/vim-config/autoload/ ~/.vim/***     
+> 1. ***sudo git clone https://github.com/omega-Lee/vim-config***  
+> 2. **ln -s -f ~/vim-config/ ~/.vim**  
 
 # 特殊键位说明
 > ***space s:强制保存***     
