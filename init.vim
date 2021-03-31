@@ -1,9 +1,3 @@
-"vim script test
-
-
-"vim script test
-
-
 "----------键位配置内容开始----------
 "渐进式搜索
 set incsearch
@@ -123,7 +117,7 @@ Plug 'junegunn/vim-easy-align'   " 代码格式化
 "Plug 'ryanoasis/vim-devicons' "图标 需要powerline字体
 "set encoding=UTF-8
 
-Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }  "异步显示文件颜色代码
+"Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }  "异步显示文件颜色代码
 Plug 'RRethy/vim-illuminate'
 let g:Hexokinase_highlighters = ['virtual']
 let g:Illuminate_delay = 150
@@ -140,14 +134,14 @@ Plug 'vim-airline/vim-airline' "状态栏
 Plug 'w0rp/ale'	"语法检查
 Plug 'jiangmiao/auto-pairs' "括号补全
 Plug 'Yggdroot/indentLine' "缩进线
-Plug 'vim-scripts/luainspect.vim'	"lua插件
-Plug 'xolox/vim-misc' "lua插件
+"Plug 'vim-scripts/luainspect.vim'	"lua插件
+"Plug 'xolox/vim-misc' "lua插件
 Plug 'gcmt/wildfire.vim'
 Plug 'tpope/vim-surround'
-Plug 'mg979/vim-visual-multi'
+"Plug 'mg979/vim-visual-multi'
 Plug 'luochen1990/rainbow'
-Plug 'JamshedVesuna/vim-markdown-preview' "markdown 可视化插件
-Plug 'suan/vim-instant-markdown' "markdown 可视化插件
+"Plug 'JamshedVesuna/vim-markdown-preview' "markdown 可视化插件
+"Plug 'suan/vim-instant-markdown' "markdown 可视化插件
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } "vim fzf 插件
 Plug 'junegunn/fzf.vim' "vim fzf 插件
 
@@ -161,12 +155,6 @@ set cpt=.,k,w,b
 set completeopt=menu,menuone,noselect
 " 禁止在下方显示一些啰嗦的提示
 set shortmess+=c
-
-
-if has('nvim')
-else
-
-endif
 
 "Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 call plug#end()
@@ -288,6 +276,7 @@ nmap <leader>rn <Plug>(coc-rename)
 
 "coc config
 
+endif
 
 "rainbow
 let g:rainbow_active = 1
@@ -315,7 +304,6 @@ let g:rainbow_conf = {
 \   }
 \}
 
-endif
 "Theme setting 
 syntax enable
 
