@@ -128,7 +128,7 @@ Plug 'preservim/nerdtree' "目录树
 Plug 'scrooloose/nerdcommenter' "快速注释
 Plug 'mhinz/vim-signify' "git修改提醒
 Plug 'Xuyuanp/nerdtree-git-plugin' "目录树
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-airline/vim-airline' "状态栏
 Plug 'w0rp/ale'	"语法检查
@@ -142,8 +142,8 @@ Plug 'tpope/vim-surround'
 Plug 'luochen1990/rainbow'
 "Plug 'JamshedVesuna/vim-markdown-preview' "markdown 可视化插件
 "Plug 'suan/vim-instant-markdown' "markdown 可视化插件
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } "vim fzf 插件
-Plug 'junegunn/fzf.vim' "vim fzf 插件
+"Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } "vim fzf 插件
+"Plug 'junegunn/fzf.vim' "vim fzf 插件
 
 "vim-auto-popmenu
 " 设定需要生效的文件类型，如果是 "*" 的话，代表所有类型
