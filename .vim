@@ -1,0 +1,1 @@
+/home/lu/vim-config/vim-config/
